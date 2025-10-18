@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import joblib
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, r2_score
 import numpy as np
 
 # データ読み込み
@@ -46,3 +46,9 @@ plt.show()
 # 簡易的に全データでRMSEを表示
 rmse = np.sqrt(mean_squared_error(y_test, y_pred))
 print(f"✅ テストデータ RMSE: {rmse:.3f}")
+
+# -----------------------------
+# 4. R²スコア
+# -----------------------------
+r2 = r2_score(y_test, y_pred)
+print(f"✅ テストデータ R²スコア: {r2:.3f}")

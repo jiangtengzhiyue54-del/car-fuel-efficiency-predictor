@@ -7,6 +7,7 @@ import japanize_matplotlib
 import seaborn as sns
 from sklearn.metrics import mean_squared_error
 import numpy as np
+from sklearn.metrics import r2_score
 
 st.title("🚗 車の燃費予測アプリ")
 
@@ -55,3 +56,7 @@ if st.button("燃費を予測"):
     # RMSE表示
     rmse = np.sqrt(mean_squared_error(y_test, y_pred))
     st.write(f"テストデータ RMSE: {rmse:.3f}")
+
+    #R2スコア表示
+    r2 = r2_score(y_test, y_pred)
+    st.write(f"テストデータ R²スコア: {r2:.3f}")
