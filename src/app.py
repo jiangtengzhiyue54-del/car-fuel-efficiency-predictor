@@ -25,8 +25,10 @@ origin = st.selectbox("製造国 (origin)", [1, 2, 3], index=0,
                       format_func=lambda x: {1:"USA",2:"Europe",3:"Japan"}[x])
 
 if st.button("燃費を予測"):
+    X_test = pd.read_csv("data/processed/X_test.csv")
+    columns = X_test.columns  # 学習時と完全一致させる
     X_new = pd.DataFrame([[cylinders, displacement, horsepower, weight, acceleration, model_year, origin]],
-                         columns=["cylinders","displacement","horsepower","weight","acceleration","model year", "origin"])
+                         columns=columns)
     mpg_pred = model.predict(X_new).item()
     st.success(f"予測燃費: {mpg_pred:.2f} MPG")
 
@@ -60,3 +62,6 @@ if st.button("燃費を予測"):
     #R2スコア表示
     r2 = r2_score(y_test, y_pred)
     st.write(f"テストデータ R²スコア: {r2:.3f}")
+
+    st.write("入力データ：", input_data)
+    st.write("予測値：", y_pred)

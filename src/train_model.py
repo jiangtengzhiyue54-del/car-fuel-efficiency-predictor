@@ -9,8 +9,8 @@ def train_and_evaluate():
     # データ読み込み
     X_train = pd.read_csv("data/processed/X_train.csv")
     X_test = pd.read_csv("data/processed/X_test.csv")
-    y_train = pd.read_csv("data/processed/y_train.csv")
-    y_test = pd.read_csv("data/processed/y_test.csv")
+    y_train = pd.read_csv("data/processed/y_train.csv").values.ravel()
+    y_test = pd.read_csv("data/processed/y_test.csv").values.ravel()
 
     # モデル定義
     model = LinearRegression()
